@@ -69,6 +69,7 @@ function Community() {
         )}
 
         {selectedTopic ? (
+        
             <ChatRoom topic={selectedTopic} />
         ) : (
           <motion.div

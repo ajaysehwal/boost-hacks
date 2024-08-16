@@ -1,8 +1,9 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { useAuth } from "./AuthContext";
-
-const CHAT_SERVER_URL = urls.chatServer;
+import { FaSpinner } from "react-icons/fa";
+import { motion } from "framer-motion";
+const CHAT_SERVER_URL = "https://boostchat-server.koyeb.app";
 
 export const SocketContext = createContext(null);
 
@@ -15,9 +16,6 @@ export const SocketProvider = ({ children }) => {
     if (user) {
       socket.current = io(CHAT_SERVER_URL, {
         query: { userId: user.uid },
-        reconnection: true,
-        reconnectionAttempts: Infinity,
-        reconnectionDelay: 1000,
         transports: ["websocket", "polling"],
         withCredentials: true,
       });
@@ -30,17 +28,29 @@ export const SocketProvider = ({ children }) => {
       socket.current.on("error", (error) =>
         console.error("Socket error:", error)
       );
-    }
 
-    return () => {
-      if (socket.current) {
-        socket.current.disconnect();
-      }
-    };
+      return () => {
+        if (socket.current) {
+          socket.current.disconnect();
+          socket.current = null;
+        }
+      };
+    }
   }, [user]);
 
+  if (!user) {
+    return (
+      <div className="flex justify-center items-center h-screen w-full text-2xl text-blue-500 font-semibold">
+        <p>Please Register or login for particate in community chat</p>
+      </div>
+    );
+  }
   if (!isSocketReady) {
-    return null;
+    return (
+      <div class="flex items-center justify-center h-screen bg-gradient-to-t from-zinc-800 via-blue-600 to-blue-900">
+        <LoadingScreen />
+      </div>
+    );
   }
 
   return (
@@ -51,7 +61,6 @@ export const SocketProvider = ({ children }) => {
 };
 
 import { useContext } from "react";
-import { urls } from "../libs/url";
 
 export const useSocket = () => {
   const context = useContext(SocketContext);
@@ -60,3 +69,14 @@ export const useSocket = () => {
   }
   return context;
 };
+
+const LoadingScreen = () => (
+  <div className="flex justify-center items-center h-64">
+    <motion.div
+      animate={{ rotate: 360 }}
+      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+    >
+      <FaSpinner className="text-white text-4xl" />
+    </motion.div>
+  </div>
+);

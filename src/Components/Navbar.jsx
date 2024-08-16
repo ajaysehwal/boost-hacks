@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  FaSun,
-  FaMoon,
-  FaBars,
-  FaTimes,
-  FaUser,
-  FaChevronDown,
-} from "react-icons/fa";
+import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
-
+import { UserDropdown } from "./Account";
 const NavItem = ({ item, currentPath }) => (
   <motion.div className="relative">
     <Link
@@ -30,53 +23,6 @@ const NavItem = ({ item, currentPath }) => (
   </motion.div>
 );
 
-const UserDropdown = ({ user, handleLogout }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none"
-      >
-        <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
-          <FaUser className="text-gray-600" />
-        </div>
-        <span>{user.name}</span>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-10"
-          >
-            <Link
-              to="/lms"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              LMS
-            </Link>
-            <Link
-              to="/profile"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              Profile
-            </Link>
-            <button
-              onClick={handleLogout}
-              className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              Logout
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -93,6 +39,8 @@ function Navbar() {
     { name: "Community", path: "/community" },
     { name: "Achievements", path: "/achievements" },
     { name: "Committee", path: "/committee" },
+    { name: "Tech News", path: "/technews" },
+
   ];
 
   const toggleDarkMode = () => {
@@ -227,12 +175,15 @@ function Navbar() {
               ))}
               {user ? (
                 <>
-                  <Link
-                    to="/dashboard"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    Dashboard
-                  </Link>
+                  {user.email === "admin@gmail.com" && (
+                    <Link
+                      to="/admin"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Admin Panel
+                    </Link>
+                  )}
+
                   <Link
                     to="/profile"
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"

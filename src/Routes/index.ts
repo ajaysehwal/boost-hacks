@@ -5,6 +5,7 @@ import Events from "../Components/Events";
 import Home from "../Components/Home";
 import Achievements from "../Components/Achievements";
 import ChatRoom from "../Components/chatRoom";
+import TechNews from "../Components/technews";
 
 export const routes = [
   {
@@ -16,12 +17,12 @@ export const routes = [
     Element: AboutUs,
   },
   {
-    path: "/events",
-    Element: Events,
+    path: "/technews",
+    Element: TechNews,
   },
   {
-    path: "/community",
-    Element: Community,
+    path: "/events",
+    Element: Events,
   },
   {
     path: "/community/:club",
