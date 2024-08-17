@@ -58,14 +58,6 @@ function StudentDashboard() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-700 to-neutral-900 p-6 text-white"
     >
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-5xl font-bold mb-4">Student Dashboard</h2>
-      </motion.div>
 
       <div className="max-w-4xl mx-auto">
         <div className="flex mb-6">

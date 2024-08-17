@@ -40,7 +40,6 @@ function Navbar() {
     { name: "Achievements", path: "/achievements" },
     { name: "Committee", path: "/committee" },
     { name: "Tech News", path: "/technews" },
-
   ];
 
   const toggleDarkMode = () => {
@@ -82,11 +81,16 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex-shrink-0">
             <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-44 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden"
             >
-              {/* Logo SVG */}
+              <div className="font-bold text-xl tracking-wide flex items-center">
+                <span className="text-2xl mr-1">🚀</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">
+                  Boost Guide
+                </span>
+              </div>
             </motion.div>
           </Link>
 

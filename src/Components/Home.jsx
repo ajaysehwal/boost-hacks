@@ -30,7 +30,7 @@ function Home() {
         className="text-4xl sm:text-5xl font-bold text-center mb-6"
         variants={itemVariants}
       >
-        Welcome to Club Collab
+        Welcome to 🚀 Boost Guide
       </motion.h1>
       <motion.p 
         className="text-xl sm:text-2xl text-center mb-16"
@@ -56,7 +56,7 @@ function Home() {
               <div className="h-1.5 w-16 bg-blue-500 mb-4"></div>
               <h3 className="text-3xl font-light mb-4">{aim}</h3>
               <p className="text-gray-300">
-                {index === 0 && "ClubCollab gives you a platform to explore advanced technologies and provides momentum to your innovation."}
+                {index === 0 && "Boost Guide gives you a platform to explore advanced technologies and provides momentum to your innovation."}
                 {index === 1 && "Share your ideas with others and build real-time projects to foster personal and collective growth."}
                 {index === 2 && "This club is meant for collaboration, where members provide solutions and support to those with queries."}
               </p>

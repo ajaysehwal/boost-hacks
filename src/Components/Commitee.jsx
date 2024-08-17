@@ -60,7 +60,7 @@ function Committee() {
       >
         <h2 className="text-4xl sm:text-5xl font-extrabold text-white text-center mb-8">Our Team</h2>
         <p className="text-xl text-gray-200 text-center max-w-3xl mx-auto mb-16">
-          The ClubCollab Committee is the backbone of our organization, ensuring smooth operations, organizing events, and fostering a vibrant community. Each member brings a unique set of skills and experiences, contributing to our shared vision of growth and innovation.
+          The Boost Guide Committee is the backbone of our organization, ensuring smooth operations, organizing events, and fostering a vibrant community. Each member brings a unique set of skills and experiences, contributing to our shared vision of growth and innovation.
         </p>
         
         <div className="grid gap-8 md:grid-cols-2">

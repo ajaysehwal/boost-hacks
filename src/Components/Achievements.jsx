@@ -33,7 +33,7 @@ function Achievements() {
       >
         <h1 className="text-6xl font-bold text-center mb-12">Achievements</h1>
         <p className="text-2xl text-center mb-16">
-          ClubCollab has worked hard over the years to bring out these fruitful results.
+          Boost Guide has worked hard over the years to bring out these fruitful results.
         </p>
 
         <AchievementSection
@@ -54,7 +54,7 @@ function Achievements() {
 
         <AchievementSection
           title="ISRO Chandrayaan-3"
-          description="In 2023, some of our ClubCollab students created a satellite named Beliefsat, which was used in the launch of Chandrayaan-3 at ISRO."
+          description="In 2023, some of our Boost Guide students created a satellite named Beliefsat, which was used in the launch of Chandrayaan-3 at ISRO."
         />
       </motion.div>
     </div>
